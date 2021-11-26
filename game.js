@@ -47,15 +47,9 @@ function checkAnswer(currentLevel) {
     }
 
 
-function startOver()
-{
-     //3. Inside this function, you'll need to reset the values of level, gamePattern and started variables.
-  level = 0;
-  gamePattern = [];
-  started = false;
-}
 
 function nextSequence(){
+  userClickedPattern = [];
      //4. Inside nextSequence(), increase the level by 1 every time nextSequence() is called.
   level++;
     var randomNumber=Math.floor(((Math.random())*10)/3);
@@ -72,11 +66,6 @@ function nextSequence(){
    
 }
 
-function playSound(name)
-{
-    var audio = new Audio("sounds/" +name + ".mp3");
-    audio.play();
-}
 
 
 $(document).keypress(function() {
@@ -104,6 +93,9 @@ $(".btn").click(function() {
     checkAnswer(userClickedPattern.length-1);
   });
 
+
+  
+
   function animatePress(currentColor) {
 
     //2. Use jQuery to add this pressed class to the button that gets clicked inside animatePress().
@@ -114,4 +106,19 @@ $(".btn").click(function() {
       $("#" + currentColor).removeClass("pressed");
     }, 100);
   }
+
   
+  function playSound(name)
+  {
+      var audio = new Audio("sounds/" +name + ".mp3");
+      audio.play();
+  }
+
+  
+function startOver()
+{
+     //3. Inside this function, you'll need to reset the values of level, gamePattern and started variables.
+  level = 0;
+  gamePattern = [];
+  started = false;
+}
